@@ -26,8 +26,8 @@ num = str(7316717653133062491922511967442657474235534919493496983520312774506326
 max = 0
 
 for x in range(0, len(num) - 4):
-	temp = int(num[x]) * int(num[x + 1]) * int(num[x + 2]) * int(num[x + 3]) * int(num[x + 4])
-	if temp > max:
-		max = temp
+    temp = int(num[x]) * int(num[x + 1]) * int(num[x + 2]) * int(num[x + 3]) * int(num[x + 4])
+    if temp > max:
+        max = temp
 
 print max

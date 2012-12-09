@@ -25,24 +25,24 @@ def divisor_generator(n):
             yield n/i;
 
 def uniqify(seq):
-	return set(seq)
+    return set(seq)
 
 def get_num_divisors(n):
-	divisors = []
-	for i in divisor_generator(n):
-		divisors.append(i)
-	return len(uniqify(divisors))
+    divisors = []
+    for i in divisor_generator(n):
+        divisors.append(i)
+    return len(uniqify(divisors))
 
 def get_triangle_number(n):
-	triangle_number = 0
-	for i in xrange(n):
-		triangle_number += i
-	return triangle_number
+    triangle_number = 0
+    for i in xrange(n):
+        triangle_number += i
+    return triangle_number
 
 num = 0
 while True:
-	num += 1
-	triangle_number = get_triangle_number(num)
-	if get_num_divisors(triangle_number) > 500:
-		print triangle_number
-		break
+    num += 1
+    triangle_number = get_triangle_number(num)
+    if get_num_divisors(triangle_number) > 500:
+        print triangle_number
+        break
