@@ -19,13 +19,16 @@ max_count = 0
 
 class Cache(object):
 
+    cache = {}
+
     def find_count(self, n):
         count = 1
         original_n = n
 
         while n != 1:
-            if self.get_count(n):
-                count += self.get_count(n)
+            n_count = self.get_count(n)
+            if n_count:
+                count += n_count
                 break
 
             if n % 2 == 0:
@@ -35,21 +38,19 @@ class Cache(object):
 
             count += 1
 
-        setattr(self, '_%s' % original_n, count)
+        self.cache[original_n] = count
 
     def get_count(self, n):
-        try:
-            return getattr(self, '_%s' % n)
-        except AttributeError:
-            return None
+        return self.cache.get(n, None)
 
 cache = Cache()
 
 for n in xrange(1, 1000000, 2):
     cache.find_count(n)
 
-    if cache.get_count(n) > max_count:
+    count = cache.get_count(n)
+    if count > max_count:
         winner = n
-        max_count = cache.get_count(n)
+        max_count = count
 
 print winner
